@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+  <% if @vendor.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@vendor.errors.count, "error") %> prohibited this vendor from being saved:</h2>
+
+      <ul>
+      <% @vendor.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @vendor.name %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @vendor.address1 %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @vendor.business_phone %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @vendor.city %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @vendor.country %>
+</p>
+
+<%= link_to 'Edit', edit_vendor_path(@vendor) %>
+<%= link_to 'Back', vendors_path %>

@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+  <% if @currency.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@currency.errors.count, "error") %> prohibited this currency from being saved:</h2>
+
+      <ul>
+      <% @currency.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<p>
+  <strong>Currency Name:</strong>
+  <%= @currency.name %>
+</p>
+
+<p>
+  <strong>Account Balance:</strong>
+  <%=humanized_money_with_symbol @currency.amount %>
+</p>
+
+<%= link_to 'Edit', edit_user_account_currency_path(@currency.account.user, @currency.account, @currency) %>
+<%= link_to 'Back', user_account_currencies_path %>

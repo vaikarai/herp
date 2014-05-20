@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+  <% if @budget.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@budget.errors.count, "error") %> prohibited this budget from being saved:</h2>
+
+      <ul>
+      <% @budget.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<p>
+  <strong>Budget for:</strong>
+  <%= @budget.budget_month.to_formatted_s(:db) %>
+</p>
+
+<p>
+  <strong>Budget Amount:</strong>
+  <%=humanized_money_with_symbol @budget.amount %>
+</p>
+
+<%= link_to 'Edit', edit_user_budget_path(@budget.user, @budget) %>
+<%= link_to 'Back', user_budgets_path %>

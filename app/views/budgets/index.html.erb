@@ -1,0 +1,29 @@
+<h1>Listing budgets</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Budget Month</th>
+      <th>Budget Amount</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @budgets.each do |budget| %>
+      <tr>
+        <td><%= budget.budget_month %></td>
+        <td><%= humanized_money_with_symbol budget.amount %></td>
+        <td><%= link_to 'Show', user_budget_path(budget.user, budget) %></td>
+        <td><%= link_to 'Edit', edit_user_budget_path(budget.user, budget) %></td>
+        <td><%= link_to 'Destroy', user_budget_path(budget.user, budget), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New budget', new_user_budget_path %>

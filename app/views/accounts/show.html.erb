@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+  <% if @account.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@account.errors.count, "error") %> prohibited this account from being saved:</h2>
+
+      <ul>
+      <% @account.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<p>
+  <strong>Account Name:</strong>
+  <%= @account.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @account.description %>
+</p>
+
+<%= link_to 'Edit', edit_user_account_path(@account.user, @account) %>
+<%= link_to 'Back', user_accounts_path %>
