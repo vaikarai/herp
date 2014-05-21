@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.4'
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+#gem 'sqlite3'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.2'
@@ -34,7 +34,7 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-gem 'bcrypt-ruby', '~> 3.1.2'
+#gem 'bcrypt-ruby', '~> 3.1.2'
 
 gem 'hirb'
 
@@ -46,18 +46,23 @@ gem 'money-rails'
 
 gem 'pg'
 
-gem 'pry'
-
 gem 'cancancan'
 
 gem 'sorcery'
 
 gem 'unicorn'
 
-gem 'capistrano'
-gem 'capistrano-rails'
-gem 'capistrano-bundler'
-gem 'capistrano-rbenv'
+group :development do
+	gem 'capistrano'
+	gem 'capistrano-rails'
+	gem 'capistrano-bundler'
+	gem 'capistrano-rbenv'
+	gem 'debugger'
+	gem 'quiet_assets'
+	gem 'binding_of_caller'
+	gem 'better_errors'
+	gem 'pry'
+end
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -69,8 +74,8 @@ gem 'capistrano-rbenv'
 # gem 'capistrano', group: :development
 
 # Use debugger
-gem 'debugger', group: [:development, :test]
-gem 'quiet_assets'
-gem 'binding_of_caller'
-gem 'better_errors'
+# gem 'debugger', group: [:development, :test]
+# gem 'quiet_assets'
+# gem 'binding_of_caller'
+# gem 'better_errors'
 
