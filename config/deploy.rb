@@ -3,19 +3,22 @@ lock '3.2.1'
 
 set :application, 'herp'
 set :deploy_user, 'deploy'
-set :repo_url, 'git@example.com:me/my_repo.git'
+set :repo_url, 'git@github.com:vaikarai/herp.git'
 
 # setup rvm.
-set :rbenv_type, :system
-set :rbenv_ruby, '2.1.1'
-set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
-set :rbenv_map_bins, %w{rake gem bundle ruby rails}
+# set :rbenv_type, :system
+set :rbenv_ruby, '2.1.2'
+# set :rbenv_path, '/home/deploy/.rbenv'
+# set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
+# set :rbenv_map_bins, %w{rake gem bundle ruby rails}
+
+
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
 
 # Default deploy_to directory is /var/www/my_app
-# set :deploy_to, '/var/www/my_app'
+set :deploy_to, '/var/www/herp'
 
 # Default value for :scm is :git
 # set :scm, :git
