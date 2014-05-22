@@ -11,7 +11,7 @@ class CategoriesController < ApplicationController
 	def show
 		@vendors = Vendor.where(category_id: params[:id])
 		respond_to do |format|
-	        format.html { render 'vendors/_vendor' }
+	        format.html
 	        format.json { head :no_content }
 	        format.js
   		end
@@ -67,6 +67,6 @@ private
 	def set_category
 		@category = Category.find(params[:id])
 	end
-	
+
 end
 

@@ -4,7 +4,7 @@ class Ability
   def initialize(user)
 
     user ||= User.new
-    if user.first_name == "Vaikarai"
+    if user.city == "Ajax"
         can :manage, :all
     else
         can :read, :all

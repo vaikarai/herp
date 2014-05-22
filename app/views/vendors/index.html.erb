@@ -22,9 +22,9 @@
         <td><%= vendor.business_phone %></td>
         <td><%= vendor.city %></td>
         <td><%= vendor.country %></td>
-        <td><%= link_to 'Show', vendor %></td>
-         <td><%= link_to 'Edit', edit_vendor_path(vendor) %></td>
-        <td><%= link_to 'Destroy', vendor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', category_vendor_path(vendor.category, vendor) %></td>
+         <td><%= link_to 'Edit', edit_category_vendor_path(vendor.category, vendor) %></td>
+        <td><%= link_to 'Destroy', category_vendor_path(vendor.category, vendor), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -32,4 +32,5 @@
 
 <br>
 
-<%= link_to 'New vendor', new_vendor_path %>
+<%= link_to 'New vendor', new_category_vendor_path %>  |  
+<%= link_to 'Back to All Categories', categories_path %>

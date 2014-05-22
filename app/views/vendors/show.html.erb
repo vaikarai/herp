@@ -37,5 +37,5 @@
   <%= @vendor.country %>
 </p>
 
-<%= link_to 'Edit', edit_vendor_path(@vendor) %>
-<%= link_to 'Back', vendors_path %>
+<%= link_to 'Edit', edit_category_vendor_path(@vendor.category, @vendor) %>
+<%= link_to 'Back', category_vendors_path %>

@@ -7,8 +7,10 @@ Herp::Application.routes.draw do
   resources :password_resets
 
   resources :sessions, only: [:new, :create, :destroy]
-  resources :vendors
-  resources :categories
+
+  resources :categories do
+    resources :vendors
+  end
   resources :users do
     resources :expenses, except: [:index]
     resources :accounts do

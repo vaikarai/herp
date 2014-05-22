@@ -1,9 +1,10 @@
 class VendorsController < ApplicationController
 
 	before_action :set_vendor, only: [:show, :edit, :update, :destroy]
+	before_action :set_category
 
 	def index
-		@vendors = Vendor.all
+		@vendors = @category.vendors
 	end
 
 	def show
@@ -15,10 +16,11 @@ class VendorsController < ApplicationController
 
 	def create
 		@vendor = Vendor.new(vendor_params)
+		@vendor.category_id = params[:category_id]
 
 		respond_to do |format|
 	      if @vendor.save
-	        format.html { redirect_to @vendor, notice: 'vendor was successfully created.' }
+	        format.html { redirect_to category_vendors_path, notice: 'vendor was successfully created.' }
 	        format.json { render action: 'show', status: :created, location: @vendor }
 	      else
 	        format.html { render action: 'new' }
@@ -33,7 +35,7 @@ class VendorsController < ApplicationController
 	def update
 		respond_to do |format|
 	      if @vendor.update(vendor_params)
-	        format.html { redirect_to @vendor, notice: 'vendor was successfully updated.' }
+	        format.html { redirect_to category_vendors_path, notice: 'vendor was successfully updated.' }
 	        @vendor.errors.add(:base, "Sorry We are booked for this slot")
 	        format.json { head :no_content }
 	      else
@@ -46,7 +48,7 @@ class VendorsController < ApplicationController
 	def destroy
 		@vendor.destroy
     	respond_to do |format|
-	      	format.html { redirect_to vendors_url }
+	      	format.html { redirect_to category_vendors_path }
 	      	format.json { head :no_content }
   		end
 	end
@@ -61,5 +63,8 @@ private
 		@vendor = Vendor.find(params[:id])
 	end
 
+	def set_category
+		@category = Category.find(params[:category_id])
+	end
 end
  

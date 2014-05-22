@@ -1,9 +1,9 @@
-<h1>Listing Expense Types</h1>
+<h1>Listing All Categories</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Expense Type</th>
+      <th>Category</th>
       <th>Description</th>
       <th></th>
       <th></th>
@@ -20,7 +20,8 @@
 
         <% if can? :update, category %>
         <td><%= link_to 'Edit', edit_category_path(category) %></td>
-        <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show All Vendors', category_vendors_path(category) %></td>
         <% end %>
         </td>
       </tr>
