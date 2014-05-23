@@ -1,11 +1,16 @@
 <h1>Search Expense By Category: </h1>
-
+<div class="large-3 columns">
 <%= form_tag user_reports_search_path, method: :get, authentication: false, id: 'search-form' do %>
   <%= text_field_tag  :search%>
   <%= submit_tag "Search" %>
 <% end %>
-
-	
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 <% if @search === nil %>
   <div id="error_explanation">

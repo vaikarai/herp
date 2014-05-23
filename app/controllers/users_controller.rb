@@ -11,6 +11,8 @@ class UsersController < ApplicationController
 
   def show        
     @balance = current_user.calc_budget_balance
+    @monthly_expenses = current_user.calc_monthly_total_expenses
+    @yearly_expenses = current_user.calc_yearly_total_expenses
   end
 
   def new

@@ -22,5 +22,5 @@
   <%=humanized_money_with_symbol @budget.amount %>
 </p>
 
-<%= link_to 'Edit', edit_user_budget_path(@budget.user, @budget) %>
-<%= link_to 'Back', user_budgets_path %>
+<%= link_to 'Edit', edit_user_budget_path(@budget.user, @budget), class: "button small round"  %>
+<%= link_to 'Back', user_budgets_path, class: "button small round"  %>

@@ -1,3 +1,5 @@
+<div class="row">
+<div class="large-4 columns">
 <%= form_for([@category, @vendor]) do |f| %>
   <% if @vendor.errors.any? %>
     <div id="error_explanation">
@@ -51,4 +53,6 @@
     <%= f.submit %>
   </div>
 <% end %>
-
+</div>
+</div>  
+<br>

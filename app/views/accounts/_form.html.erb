@@ -1,3 +1,5 @@
+<div class="row">
+<div class="large-4 columns">
 <%= form_for([current_user, @account]) do |f| %>
   <% if @account.errors.any? %>
     <div id="error_explanation">
@@ -19,8 +21,11 @@
     <%= f.label :description %><br>
     <%= f.text_field :description %>
   </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
-
+</div>
+</div>  
+<br>

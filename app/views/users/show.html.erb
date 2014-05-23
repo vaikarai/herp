@@ -1,12 +1,28 @@
-<H1>Remaining Budget Balance</H1>
-<div id="budget_balance"><strong><%= humanized_money_with_symbol @balance %></strong></div>
-<br>
 
-<%= link_to 'Show All Accounts', user_accounts_path(current_user) %>
-<%= link_to 'Show All Budgets', user_budgets_path(current_user) %>
+<ul class="large-block-grid-3">
+  <li>
+    <div id="budget_balance" class="panel">
+    <strong>Remaining Budget Balance:<br>
+      <%= humanized_money_with_symbol @balance %></strong>
+    </div>
+  </li>
+  <li>
+    <div class="panel">
+    <strong>Current Month's Expense Total:<br>
+      <%= humanized_money_with_symbol @monthly_expenses %></strong>
+    </div>
+  </li>
+  <li>
+    <div class="panel">
+    <strong>Current Year's Expense Total:<br>
+      <%= humanized_money_with_symbol @yearly_expenses %></strong>
+    </div>
+  </li>
+</ul>
 
-<%= link_to 'Show All Categories', categories_path %>
 
-<%= link_to 'Enter Expense Transactions', new_user_expense_path(current_user) %>
-
-<%= link_to 'Expense Reports', '/users/reports' %>
+<%= link_to 'Show All Categories', categories_path, class: "button large round success" %>
+<%= link_to 'Show All Accounts', user_accounts_path(current_user), class: "button large round success" %>
+<%= link_to 'Show All Budgets', user_budgets_path(current_user), class: "button large round success" %>
+<%= link_to 'Expense Reports', "/users/reports", class: "button large round success" %>
+<%= link_to 'Enter Expense Transactions', new_user_expense_path(current_user), class: "button large round success expand" %>

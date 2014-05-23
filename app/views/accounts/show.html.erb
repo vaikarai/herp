@@ -22,5 +22,5 @@
   <%= @account.description %>
 </p>
 
-<%= link_to 'Edit', edit_user_account_path(@account.user, @account) %>
-<%= link_to 'Back', user_accounts_path %>
+<%= link_to 'Edit', edit_user_account_path(@account.user, @account), class: "button small round"  %>
+<%= link_to 'Back', user_accounts_path, class: "button small round"  %>

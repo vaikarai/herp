@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "Home Solutions" %></title>
 
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
@@ -14,24 +14,58 @@
   </head>
 
   <body>
+<nav class="top-bar" data-topbar>
+  <% if current_user %>
+  <ul class="title-area">
+    <li class="name">
+    <h1><%= link_to 'Home Page', current_user %></h1>
+    </li>
+     <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+  </ul>
 
-  <div id="nav">
-    <% if current_user %>
-      <%= link_to 'Back to Home Page', current_user %>
-      <%= link_to "Edit Profile", edit_user_path(current_user.id) %>
-      <%= link_to "Logout", :logout, method: :post %>
-    <% else %>
-      <%= link_to "Register", new_user_path %> |
-      <%= link_to "Login", :login %>
-    <% end %>
-  </div>
-  <div>
+  <section class="top-bar-section">
+    <!-- Right Nav Section -->
+    <ul class="right">
+       <li class="active"><%= link_to "Logout", :logout, method: :post %></li>
+    </ul>
+
+    <!-- Left Nav Section -->
+    <ul class="left">
+      <li><%= link_to "Edit Profile", edit_user_path(current_user.id)%></li>
+    </ul>
+  </section>
+  <% else %>
+
+    <ul class="title-area">
+    <li class="name">
+      <h1><%= link_to "Register", new_user_path %></h1>
+    </li>
+     <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+  </ul>
+
+  <section class="top-bar-section">
+    <!-- Right Nav Section -->
+    <ul class="left">
+ <li><%= link_to "Login", :login %></li>
+    </ul>
+  </section>
+  <% end %>
+</nav>
+
+
+
+  <div class="row">
+  <div class="large-12 columns">
+    <div>
     <p id="notice"><%= flash[:notice] %></p>
     <p id="alert"><%= flash[:alert] %></p>
   </div>
 
-
     <%= yield %>
+    </div>
+    </div>
     <%= javascript_include_tag "application" %>
   </body>
 </html>

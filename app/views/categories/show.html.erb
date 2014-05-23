@@ -20,6 +20,6 @@
   <%= @category.description %>
 </p>
 
-<%= link_to 'Edit', edit_category_path(@category) %>
-<%= link_to 'Back', categories_path %>
-<%= link_to 'Show All Vendors', category_vendors_path(@category) %>
+<%= link_to 'Edit', edit_category_path(@category), class: "button small round"  %>
+<%= link_to 'Back', categories_path, class: "button small round"  %>
+<%= link_to 'Show All Vendors', category_vendors_path(@category), class: "button small round"  %>

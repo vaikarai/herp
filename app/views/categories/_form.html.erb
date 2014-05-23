@@ -1,3 +1,5 @@
+<div class="row">
+<div class="large-4 columns">
 <%= form_for(@category) do |f| %>
   <% if @category.errors.any? %>
     <div id="error_explanation">
@@ -19,9 +21,10 @@
     <%= f.label :description %><br>
     <%= f.text_field :description %>
   </div>
-  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
-
+</div>
+</div>  
+<br>

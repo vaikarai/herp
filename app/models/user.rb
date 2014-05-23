@@ -20,4 +20,16 @@ class User < ActiveRecord::Base
 	    ((budget - monthly_expenses)/100)
   	end
 
+  	def calc_monthly_total_expenses
+	    begin_date = Time.now.beginning_of_month.to_date
+	    end_date = Time.now.to_date
+	    monthly_expenses = (expenses.where('purchase_date BETWEEN ? AND ?',begin_date, end_date).sum(:amount_cents))/100
+  	end
+
+  	  def calc_yearly_total_expenses
+	    begin_date = Time.now.beginning_of_year.to_date
+	    end_date = Time.now.to_date
+	    yearly_expenses = (expenses.where('purchase_date BETWEEN ? AND ?',begin_date, end_date).sum(:amount_cents))/100
+  	end
+
 end
