@@ -32,4 +32,5 @@
 <br>
 <% if can? :create, @categories, class: "button small round"  %>
   <%= link_to 'New category', new_category_path, class: "button small round"  %>
+  <%= link_to 'Back', current_user, class: "button small round"  %>
 <% end %>

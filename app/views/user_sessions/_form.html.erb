@@ -1,3 +1,5 @@
+<div class="row">
+<div class="large-4 columns">
 <%= form_tag user_sessions_path, :method => :post do %>
   <div class="field">
     <%= label_tag :email %><br />
@@ -8,6 +10,8 @@
     <%= password_field_tag :password %>
   </div>
   <div class="actions">
-    <%= submit_tag "Login" %>
+    <%= submit_tag "Login" , class: "button small round" %>
   </div>
 <% end %>
+</div>
+</div>
