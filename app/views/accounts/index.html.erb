@@ -19,6 +19,7 @@
         <td><%= link_to 'Show', user_account_path(account.user, account) %></td>
         <td><%= link_to 'Edit', edit_user_account_path(account.user, account) %></td>
         <td><%= link_to 'Destroy', user_account_path(account.user, account), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show All Currencies', user_account_currencies_path(account.user, account) %></td>
       </tr>
     <% end %>
   </tbody>

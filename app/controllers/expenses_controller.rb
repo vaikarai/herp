@@ -10,6 +10,7 @@ class ExpensesController < ApplicationController
 	end
 
 	def new
+	 	@expense = current_user.expenses.build
 	end
 
 	def create

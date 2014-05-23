@@ -2,18 +2,15 @@ class UsersController < ApplicationController
 
   #load_and_authorize_resource
 
-  #before_action :set_account, only: [:show]
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:edit, :update, :destroy]
   skip_before_filter :require_login, only: [:index, :new, :create]
 
   def index
     @users = User.all
   end
 
-  def show
-  	@expense = @user.expenses.build         
-    @balance = @user.calc_budget_balance
-    search_expense_by_category
+  def show        
+    @balance = current_user.calc_budget_balance
   end
 
   def new
@@ -28,11 +25,11 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @user }
+        format.html { redirect_to current_user, notice: 'User was successfully created.' }
+        format.json { render action: 'show', status: :created, location: current_user }
       else
         format.html { render action: 'new' }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        format.json { render json: current_user.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -40,11 +37,11 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.html { redirect_to current_user, notice: 'User was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        format.json { render json: current_user.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -55,6 +52,10 @@ class UsersController < ApplicationController
       format.html { redirect_to users_url }
       format.json { head :no_content }
     end
+  end
+
+  def reports
+    search_expense_by_category
   end
 
 private

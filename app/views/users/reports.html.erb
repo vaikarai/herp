@@ -1,0 +1,36 @@
+<h1>Search Expense By Category: </h1>
+
+<%= form_tag user_reports_search_path, method: :get, authentication: false, id: 'search-form' do %>
+  <%= text_field_tag  :search%>
+  <%= submit_tag "Search" %>
+<% end %>
+
+	
+
+<% if @search === nil %>
+  <div id="error_explanation">
+    <h2>Please enter search keyword, to get Search results!</h2>
+<% else %>
+  <h1>Listing <%= @categories.first.category %> Expenses</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Purchase Date</th>
+        <th>Amount</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+      <% @search.each do |expense| %>
+        <tr>
+          <td><%= expense.purchase_date.to_formatted_s(:db) %></td>
+          <td><%= humanized_money_with_symbol expense.amount %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

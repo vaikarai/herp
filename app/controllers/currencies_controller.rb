@@ -4,7 +4,7 @@ class CurrenciesController < ApplicationController
 		before_action :set_account
 
 	def index
-		@currencies = current_user.currencies
+		@currencies = current_user.currencies.where(account_id: params[:account_id])
 	end
 
 	def show

@@ -2,65 +2,11 @@
 <div id="budget_balance"><strong><%= humanized_money_with_symbol @balance %></strong></div>
 <br>
 
-<%= form_for ([current_user, @expense]), :data => {"user-id" => current_user.id} do |f| %>
-  <div class="field">
-<!--     <p>Choose Expense Category:</p> -->
-    <%= collection_select(:expense, :category_id, Category.all, :id, :category, prompt: 'Please Select a Category')%>
-  </div>
-  <div id="vendor_select"></div>
-    <p>Choose Account:</p>
-  <div id="account_select">
-    <%= collection_select(:expense, :account_id, current_user.accounts.all, :id, :name, prompt: true) %>
-  </div>
-  <div id="currency_select"></div>
-  <div class="field">
-    <%= f.label 'Enter Amount in Dollars' %><br>
-    <%= f.text_field :amount_cents, value: number_to_currency(f.object.amount_cents, precision: 2) %>
-  </div>
-  <div class="field">
-    <%= f.label :purchase_date %><br>
-    <%= f.date_select :purchase_date %>
-  </div>
-  <div id="expense_submit">
-    <%= f.submit %>
-  </div>
-<% end %>
+<%= link_to 'Show All Accounts', user_accounts_path(current_user) %>
+<%= link_to 'Show All Budgets', user_budgets_path(current_user) %>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
-<%= link_to 'Accounts', user_accounts_path(@user, current_user.accounts.first) %>
+<%= link_to 'Show All Categories', categories_path %>
 
-<h1>Show all expenses </h1>
+<%= link_to 'Enter Expense Transactions', new_user_expense_path(current_user) %>
 
-<%= form_tag user_path, method: :get, authentication: false, id: 'search-form' do %>
-  <%= text_field_tag  :search%>
-  <%= submit_tag "Search" %>
-<% end %>
-
-<% if @search === nil %>
-  <div id="error_explanation">
-    <h2>Please enter search keyword, to get Search results!</h2>
-<% else %>
-  <h1>Listing <%= @categories.first.category %> Expenses</h1>
-  <table>
-    <thead>
-      <tr>
-        <th>Purchase Date</th>
-        <th>Amount</th>
-        <th></th>
-        <th></th>
-        <th></th>
-      </tr>
-    </thead>
-
-    <tbody>
-
-      <% @search.each do |expense| %>
-        <tr>
-          <td><%= expense.purchase_date.to_formatted_s(:db) %></td>
-          <td><%= humanized_money_with_symbol expense.amount %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-<% end %>
+<%= link_to 'Expense Reports', '/users/reports' %>

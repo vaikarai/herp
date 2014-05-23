@@ -1,0 +1,25 @@
+<%= form_for ([current_user, @expense]), :data => {"user-id" => current_user.id} do |f| %>
+  <div class="field">
+<!--     <p>Choose Expense Category:</p> -->
+    <%= collection_select(:expense, :category_id, Category.all, :id, :category, prompt: 'Please Select a Category')%>
+  </div>
+  <div id="vendor_select"></div>
+    <p>Choose Account:</p>
+  <div id="account_select">
+    <%= collection_select(:expense, :account_id, current_user.accounts.all, :id, :name, prompt: true) %>
+  </div>
+  <div id="currency_select"></div>
+  <div class="field">
+    <%= f.label 'Enter Amount in Dollars' %><br>
+    <%= f.text_field :amount_cents, value: number_to_currency(f.object.amount_cents, precision: 2) %>
+  </div>
+  <div class="field">
+    <%= f.label :purchase_date %><br>
+    <%= f.date_select :purchase_date %>
+  </div>
+  <div id="expense_submit">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<%= link_to 'Back to Home Page', current_user %>

@@ -1,15 +1,23 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Herp</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-</head>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<body>
-<div id="nav">
+    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
+
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  </head>
+
+  <body>
+
+  <div id="nav">
     <% if current_user %>
+      <%= link_to 'Back to Home Page', current_user %>
       <%= link_to "Edit Profile", edit_user_path(current_user.id) %>
       <%= link_to "Logout", :logout, method: :post %>
     <% else %>
@@ -22,8 +30,8 @@
     <p id="alert"><%= flash[:alert] %></p>
   </div>
 
-<%= yield %>
 
-
-</body>
+    <%= yield %>
+    <%= javascript_include_tag "application" %>
+  </body>
 </html>

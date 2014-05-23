@@ -2,7 +2,10 @@ Herp::Application.routes.draw do
   get "password_resets/create"
   get "password_resets/edit"
   get "password_resets/update"
-  root :to => 'users#index'
+  get "users/reports" => "users#reports", as: :user_reports_search
+  get "main" => "main#index", as: :logout_page
+
+  root :to => 'users#show'
   resources :user_sessions
   resources :password_resets
 
