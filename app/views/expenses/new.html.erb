@@ -13,7 +13,7 @@
   </div>
   <div id="currency_select"></div>
   <div class="field">
-    <%= f.label 'Enter Amount in Dollars' %><br>
+    <%= f.label 'Enter Amount in Cents' %><br>
     <%= f.text_field :amount_cents, value: number_to_currency(f.object.amount_cents, precision: 2) %>
   </div>
   <div class="field">

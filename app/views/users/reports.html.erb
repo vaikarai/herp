@@ -14,11 +14,13 @@
   <div id="error_explanation">
     <h2>Please enter search keyword, to get Search results!</h2>
 <% else %>
+
   <h1>Listing <%= @categories.first.category %> Expenses</h1>
   <table>
     <thead>
       <tr>
         <th>Purchase Date</th>
+        <th>Vendor Name</th>
         <th>Amount</th>
         <th></th>
         <th></th>
@@ -31,7 +33,10 @@
       <% @search.each do |expense| %>
         <tr>
           <td><%= expense.purchase_date.to_formatted_s(:db) %></td>
+          <td><%= Vendor.find(expense.vendor_id).name %></td>
           <td><%= humanized_money_with_symbol expense.amount %></td>
+          <td><%= link_to 'Edit', edit_user_expense_path(current_user, expense) %></td>
+        	<td><%= link_to 'Destroy', user_expense_path(current_user, expense), method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
     </tbody>

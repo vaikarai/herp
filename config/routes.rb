@@ -15,7 +15,7 @@ Herp::Application.routes.draw do
     resources :vendors
   end
   resources :users do
-    resources :expenses, except: [:index]
+    resources :expenses #, except: [:index]
     resources :accounts do
       resources :currencies
     end

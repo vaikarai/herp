@@ -80,7 +80,7 @@ private
       if @categories.length > 1
         @search=nil
       else
-        @search = Expense.where(category_id: @categories.first.id).all
+        @search = Expense.where(category_id: @categories.first.id).all.sort_by {|x| x[:purchase_date]}
       end
   end
 end

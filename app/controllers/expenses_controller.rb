@@ -1,6 +1,7 @@
 class ExpensesController < ApplicationController
 
 	before_action :set_currency, only: [:create]	
+	before_action :set_expense, only: [:show, :edit, :update, :destroy]
 
 	def index
 		@expenses = Expense.all
@@ -28,31 +29,27 @@ class ExpensesController < ApplicationController
 	end
 
 	def edit
-		@expense = @product.expenses.update_attributes(params_expense)
-		if @expense.save
-			redirect_to product_path(@product)
-		else
-			render :edit
-		end
 	end
 
 	def update
+		debugger
 		respond_to do |format|
 	      if @expense.update(expense_params)
-	        format.html { redirect_to @vendor, notice: 'Expense was successfully updated.' }
-	        format.json { head :no_content }
+	        format.html { redirect_to user_reports_search_path, notice: 'Expense was successfully updated.' }
+	        format.js
 	      else
 	        format.html { render action: 'edit' }
-	        format.json { render json: @vendor.errors, status: :unprocessable_entity }
+	        format.js
 	      end
     	end
 	end
 
 	def destroy
+		debugger
 		@expense.destroy
 	    respond_to do |format|
-		    format.html { redirect_to vendors_url }
-		    format.json { head :no_content }
+		    format.html { redirect_to user_reports_search_path }
+		    format.js
   		end
 	end
 
@@ -62,11 +59,20 @@ private
 		params.require(:expense).permit(:paid_by, :amount_cents, :purchase_date, :vendor_id, :category_id, :account_id, :user_id)
 	end
 
+	def set_expense
+		@expense = Expense.find(params[:id])
+	end
+
 	def set_currency
 		@currency = Currency.find(params[:expense][:currency_id])
 	end
 
 	def update_account_balance
+		@currency.amount_cents = @currency.amount_cents - params[:expense][:amount_cents].to_i
+		@currency.save
+	end
+
+	def update_account_balance_delete
 		@currency.amount_cents = @currency.amount_cents - params[:expense][:amount_cents].to_i
 		@currency.save
 	end
