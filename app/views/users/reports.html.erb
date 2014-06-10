@@ -36,7 +36,7 @@
           <td><%= Vendor.find(expense.vendor_id).name %></td>
           <td><%= humanized_money_with_symbol expense.amount %></td>
           <td><%= link_to 'Edit', edit_user_expense_path(current_user, expense) %></td>
-        	<td><%= link_to 'Destroy', user_expense_path(current_user, expense), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        	<td><div id="delete_expense"><%= link_to 'Destroy', user_expense_path(current_user, expense), method: :delete %></div></td>
         </tr>
       <% end %>
     </tbody>

@@ -45,7 +45,6 @@ class ExpensesController < ApplicationController
 	end
 
 	def destroy
-		debugger
 		@expense.destroy
 	    respond_to do |format|
 		    format.html { redirect_to user_reports_search_path }
@@ -56,6 +55,7 @@ class ExpensesController < ApplicationController
 private
 
 	def expense_params
+		params[:expense][:amount_cents]=((params[:expense][:amount_cents].to_f)*100).to_i
 		params.require(:expense).permit(:paid_by, :amount_cents, :purchase_date, :vendor_id, :category_id, :account_id, :user_id)
 	end
 

@@ -21,25 +21,5 @@ $(document).ready(function (){
 		})
 	});
 
-	$('#new_expense').submit(function(event) {
-	  	event.preventDefault();
 
-	  	$.ajax({
-		  	url: $(this).attr('action'),
-		  	type: 'POST',
-		  	dataType: 'script',
-		  	data: $(this).serialize(),
-		  	beforeSend: function(){
-		  		$("input[type='submit']")
-			  	.val('Saving....')
-			  	.attr('disabled','disabled')
-				},
-			complete: function(){
-			  	$("input[type='submit']")
-		  		.val('Create Expense')
-			  	.removeAttr('disabled')
-				}
-		});
-
-	});
 });
