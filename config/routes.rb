@@ -3,6 +3,7 @@ Herp::Application.routes.draw do
   get "password_resets/edit"
   get "password_resets/update"
   get "users/reports" => "users#reports", as: :user_reports_search
+  get "categories/:id/expenses" => "categories#expenses", as: :expenses_category
   get "main" => "main#index", as: :logout_page
 
   root :to => 'users#show'

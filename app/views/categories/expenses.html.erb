@@ -1,0 +1,29 @@
+
+  <h1>Listing <%= @category.category %> Expenses</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Purchase Date</th>
+        <th>Vendor Name</th>
+        <th>Amount</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+      <% @search.each do |expense| %>
+        <tr>
+          <td><%= expense.purchase_date.to_formatted_s(:db) %></td>
+          <td><%= Vendor.find(expense.vendor_id).name %></td>
+          <td><%= humanized_money_with_symbol expense.amount %></td>
+          <td><%= link_to 'Edit', edit_user_expense_path(current_user, expense) %></td>
+        	<td><div id="delete_expense"><%= link_to 'Destroy', user_expense_path(current_user, expense), method: :delete %></div></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<br>
+<%= link_to 'Back to All Categories', categories_path, class: "button small round"  %>

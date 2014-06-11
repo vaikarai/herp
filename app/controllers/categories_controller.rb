@@ -2,7 +2,7 @@ class CategoriesController < ApplicationController
 
 	load_and_authorize_resource
 
-	before_action :set_category, only: [:show, :edit, :update, :destroy]
+	before_action :set_category, only: [:show, :edit, :update, :destroy, :expenses]
 
 	def index
 		@categories = Category.all
@@ -56,6 +56,10 @@ class CategoriesController < ApplicationController
 	      format.html { redirect_to categories_url }
 	      format.json { head :no_content }
   		end
+	end
+
+	def expenses
+		@search = Expense.where(category_id: params[:id]).all.sort_by {|x| x[:purchase_date]}
 	end
 
 private

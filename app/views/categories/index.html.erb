@@ -22,6 +22,7 @@
         <td><%= link_to 'Edit', edit_category_path(category) %></td>
         <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <td><%= link_to 'Show All Vendors', category_vendors_path(category) %></td>
+        <td><%= link_to 'Show All Expenses', expenses_category_path(category) %></td>
         <% end %>
         </td>
       </tr>
