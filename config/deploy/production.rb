@@ -18,13 +18,13 @@ set :branch, "master"
 # used to set extended properties on the server.
 
 #server 'herp.dnsalias.com', user: 'deploy', roles: %w{web app db}, my_property: :my_value
-server 'erpsrv01', user: 'sganapathi', roles: %w{web app db}, primary: true
+server 'herpprd', user: 'herpprdadm', roles: %w{web app db}, primary: true
 
 set :rails_env, :production
 set :unicorn_worker_count, 5
 set :enable_ssl, false
 
-set :server_name, "erpsrv01"
+set :server_name, "herpprd"
 set :full_app_name, "#{fetch(:application)}_#{fetch(:stage)}"
 
 # Custom SSH Options
